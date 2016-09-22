@@ -10,9 +10,9 @@ import org.robolectric.annotation.Config;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
-public class WpWeatherTestRunner extends RobolectricTestRunner {
+public class WwWeatherTestRunner extends RobolectricTestRunner {
 
-    public WpWeatherTestRunner(Class<?> testClass) throws InitializationError {
+    public WwWeatherTestRunner(Class<?> testClass) throws InitializationError {
         super(testClass);
     }
 
