@@ -1,5 +1,6 @@
 package au.com.challenge.ww.weatherapp.ui.presenter;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -24,15 +25,16 @@ public class WwWeatherMainPresenter extends Presenter<MvpViewIf> {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onStart() {
+        super.onStart();
         String key = getView().getContext().getString(R.string.forecast_api_key);
         Call<Forecast> call = Factory.weatherDataService().getForecastData(key, lat, lon);
-
+        getView().showLoading();
         Factory.enqueue(call, new Feedback<Forecast>() {
             @Override
             public void received(boolean success) {
                 Log.d(TAG, "Download forecast data request received");
+                getView().hideLoading();
             }
 
             @Override
@@ -44,7 +46,17 @@ public class WwWeatherMainPresenter extends Presenter<MvpViewIf> {
             @Override
             public void error(Throwable throwable) {
                 Log.e(TAG, "Unable to get forecast data", throwable);
+                getView().showFailureMessage(throwable.getMessage());
             }
         });
+    }
+
+    public ProgressDialog prepareProgressDialog() {
+        ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.setIndeterminate(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage(getContext().getString(R.string.loading));
+        return progressDialog;
     }
 }
