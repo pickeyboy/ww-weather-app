@@ -40,5 +40,6 @@ dependencies {
     //Android Unit Test Library
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:2.0.3-beta'
-    testCompile 'org.robolectric:robolectric:3.0-rc3'
+    testCompile 'org.robolectric:robolectric:3.1'
+    testCompile 'org.khronos:opengl-api:gl1.1-android-2.1_r1'
 }
