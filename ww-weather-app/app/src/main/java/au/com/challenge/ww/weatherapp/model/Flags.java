@@ -1,8 +1,9 @@
 package au.com.challenge.ww.weatherapp.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Flags {
+public class Flags implements Serializable {
     List<String> sources;
     List<String> isdStations;
     List<String> madisStations;

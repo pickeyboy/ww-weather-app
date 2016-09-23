@@ -5,6 +5,8 @@ import android.content.Context;
 public interface MvpViewIf {
     Context getContext();
 
+    Object getIntentData(String key);
+
     void showLoading();
 
     void hideLoading();

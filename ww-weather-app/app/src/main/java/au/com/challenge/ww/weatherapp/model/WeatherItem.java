@@ -2,13 +2,14 @@ package au.com.challenge.ww.weatherapp.model;
 
 import android.support.annotation.IdRes;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import au.com.challenge.ww.weatherapp.ui.view.WwWeatherIcons;
 
-public class WeatherItem {
+public class WeatherItem implements Serializable {
     private long sunriseTime;
     private long sunsetTime;
     private double moonPhase;

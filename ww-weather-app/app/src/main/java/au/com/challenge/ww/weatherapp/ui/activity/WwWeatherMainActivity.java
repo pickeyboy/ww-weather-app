@@ -47,6 +47,11 @@ public class WwWeatherMainActivity extends PresentableActivity<WwWeatherMainPres
     }
 
     @Override
+    public Bundle getIntentData(String key) {
+        return null;
+    }
+
+    @Override
     public void showLoading() {
         progressDialog.show();
     }

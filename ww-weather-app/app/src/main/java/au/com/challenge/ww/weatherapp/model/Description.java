@@ -1,6 +1,8 @@
 package au.com.challenge.ww.weatherapp.model;
 
-public class Description {
+import java.io.Serializable;
+
+public class Description implements Serializable {
     private String summary;
     private String icon;
 

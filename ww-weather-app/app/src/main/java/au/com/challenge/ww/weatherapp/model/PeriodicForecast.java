@@ -1,8 +1,9 @@
 package au.com.challenge.ww.weatherapp.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class PeriodicForecast extends Description {
+public class PeriodicForecast extends Description implements Serializable{
     List<WeatherItem> data;
 
     public PeriodicForecast(Description des) {
