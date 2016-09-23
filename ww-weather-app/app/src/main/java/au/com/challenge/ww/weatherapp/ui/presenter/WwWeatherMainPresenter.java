@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import au.com.challenge.ww.weatherapp.R;
 import au.com.challenge.ww.weatherapp.model.Forecast;
 import au.com.challenge.ww.weatherapp.retrofit.Factory;
 import au.com.challenge.ww.weatherapp.retrofit.Feedback;
@@ -25,7 +26,8 @@ public class WwWeatherMainPresenter extends Presenter<MvpViewIf> {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Call<Forecast> call = Factory.weatherDataService().getForecastData(lat, lon);
+        String key = getView().getContext().getString(R.string.forecast_api_key);
+        Call<Forecast> call = Factory.weatherDataService().getForecastData(key, lat, lon);
 
         Factory.enqueue(call, new Feedback<Forecast>() {
             @Override

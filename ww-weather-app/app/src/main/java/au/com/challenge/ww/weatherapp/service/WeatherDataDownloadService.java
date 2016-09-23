@@ -7,8 +7,9 @@ import retrofit.http.Path;
 
 public interface WeatherDataDownloadService {
 
-    @GET("78c4b527be7305597f7ab087d48bed6d/{lat},{lon}")
-    Call<Forecast> getForecastData(@Path("lat") String lat,
+    @GET("{key}/{lat},{lon}")
+    Call<Forecast> getForecastData(@Path("key") String key,
+                                   @Path("lat") String lat,
                                    @Path("lon") String lon);
 
 }
