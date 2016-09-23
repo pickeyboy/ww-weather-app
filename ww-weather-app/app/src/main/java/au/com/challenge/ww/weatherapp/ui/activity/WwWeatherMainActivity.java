@@ -5,6 +5,7 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,8 +25,11 @@ public class WwWeatherMainActivity extends PresentableActivity<WwWeatherMainPres
         return new WwWeatherMainPresenter(this);
     }
 
-    private ActivityWeatherDisplayBinding binding;
-    private ProgressDialog progressDialog;
+    @VisibleForTesting
+    ActivityWeatherDisplayBinding binding;
+
+    @VisibleForTesting
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +75,14 @@ public class WwWeatherMainActivity extends PresentableActivity<WwWeatherMainPres
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * This method is just to support unit test cases
+     * @return binding instance
+     */
+    public ActivityWeatherDisplayBinding getBinding() {
+        return  binding;
     }
 
 }

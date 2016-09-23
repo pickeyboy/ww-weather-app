@@ -1,8 +1,8 @@
 package au.com.challenge.ww.weatherapp.ui.presenter;
 
 import android.app.ProgressDialog;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 import android.util.Log;
 
 import au.com.challenge.ww.weatherapp.R;
@@ -40,7 +40,7 @@ public class WwWeatherMainPresenter extends Presenter<MvpViewIf> {
             @Override
             public void success(Forecast model) {
                 Log.d(TAG, "Data download success");
-                getView().bindResult(model);
+                dataFetchSuccess(model);
             }
 
             @Override
@@ -49,6 +49,11 @@ public class WwWeatherMainPresenter extends Presenter<MvpViewIf> {
                 getView().showFailureMessage(throwable.getMessage());
             }
         });
+    }
+
+    @VisibleForTesting
+    void dataFetchSuccess(Forecast model) {
+        getView().bindResult(model);
     }
 
     public ProgressDialog prepareProgressDialog() {

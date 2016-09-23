@@ -1,19 +1,9 @@
 package au.com.challenge.ww.weatherapp.retrofit;
 
-import com.google.gson.annotations.SerializedName;
-
 public class RestException extends Exception {
 
     private String status;
     private int code;
-    private String message;
-    private String developerMessage;
-
-    @SerializedName("error")
-    private String authError;
-
-    @SerializedName("error_description")
-    private String authErrorDescription;
 
     protected void assertStatusCode(int statusCode) {
         if (this.status == null && this.code == 0) {
@@ -31,10 +21,8 @@ public class RestException extends Exception {
     }
 
     public String getMessage() {
-        return String.format("status: %s, code: %s, message: %s, description: %s",
+        return String.format("status: %s, code: %s",
                 status,
-                code,
-                message != null ? message : authError,
-                developerMessage != null ? developerMessage : authErrorDescription);
+                code);
     }
 }
